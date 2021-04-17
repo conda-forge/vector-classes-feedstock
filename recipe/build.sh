@@ -3,7 +3,7 @@ set -ex
 
 mkdir build
 cd build
-cmake \
+cmake ${CMAKE_ARGS} \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
     -DBUILD_TESTING=OFF \
     ..
