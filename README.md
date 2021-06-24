@@ -11,7 +11,7 @@ Summary: SIMD Vector Classes for C++
 
 Development: https://github.com/VcDevel/Vc
 
-Documentation: https://vcdevel.github.io/Vc-1.4.1/
+Documentation: https://vcdevel.github.io/Vc-1.4.2/
 
 The Vc library implements portable, zero-overhead C++ types for explicitly
 data-parallel programming. The 1.x releases ship implementations for x86
