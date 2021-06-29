@@ -11,7 +11,10 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
+  run_exports:
+    # Each release checks the version number of the headers to make sure it matches
+    - {{ pin_subpackage('vector-classes', max_pin='x.x.x') }}
 
 requirements:
   build:
