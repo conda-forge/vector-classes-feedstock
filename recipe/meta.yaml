@@ -1,5 +1,5 @@
 {% set name = "vector-classes" %}
-{% set version = "1.4.2" %}
+{% set version = "1.4.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/VcDevel/Vc/releases/download/{{ version }}/Vc-{{ version }}.tar.gz
-  sha256: 50d3f151e40b0718666935aa71d299d6370fafa67411f0a9e249fbce3e6e3952
+  sha256: 988ea0053f3fbf17544ca776a2749c097b3139089408b0286fa4e9e8513e037f
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   run_exports:
     # Each release checks the version number of the headers to make sure it matches
     - {{ pin_subpackage('vector-classes', max_pin='x.x.x') }}
