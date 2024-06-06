@@ -1,5 +1,5 @@
 {% set name = "vector-classes" %}
-{% set version = "1.4.4" %}
+{% set version = "1.4.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/VcDevel/Vc/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 5933108196be44c41613884cd56305df320263981fe6a49e648aebb3354d57f3
+  sha256: eb734ef4827933fcd67d4c74aef54211b841c350a867c681c73003eb6d511a48
 
 build:
   skip: true  # [win]
@@ -19,6 +19,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
     - make  # [unix]
 
