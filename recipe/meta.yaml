@@ -8,10 +8,12 @@ package:
 source:
   url: https://github.com/VcDevel/Vc/archive/refs/tags/{{ version }}.tar.gz
   sha256: eb734ef4827933fcd67d4c74aef54211b841c350a867c681c73003eb6d511a48
+  patches:
+    - 0001-fix-add-missing-includes-for-C-23-compatibility.patch
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
   run_exports:
     # Each release checks the version number of the headers to make sure it matches
     - {{ pin_subpackage('vector-classes', max_pin='x.x.x') }}
