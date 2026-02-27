@@ -1,0 +1,46 @@
+From aba56028e025c9087a84956b5bb20e88739f73a5 Mon Sep 17 00:00:00 2001
+From: Chris Burr <christopher.burr@cern.ch>
+Date: Fri, 27 Feb 2026 13:31:17 +0100
+Subject: [PATCH] fix: add missing includes for C++23 compatibility
+
+In C++23, libc++ removed several transitive includes:
+- <memory> no longer transitively includes <iterator>
+- <type_traits> no longer transitively includes <utility>
+
+Add the missing direct includes:
+- <iterator> in has_contiguous_storage.h for std::random_access_iterator_tag
+  and std::iterator_traits
+- <utility> in is_functor_argument_immutable.h for std::declval
+---
+ Vc/traits/has_contiguous_storage.h        | 1 +
+ Vc/traits/is_functor_argument_immutable.h | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/Vc/traits/has_contiguous_storage.h b/Vc/traits/has_contiguous_storage.h
+index 6c16f54..b1c0057 100644
+--- a/Vc/traits/has_contiguous_storage.h
++++ b/Vc/traits/has_contiguous_storage.h
+@@ -29,6 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #define VC_TRAITS_HAS_CONTIGUOUS_STORAGE_H_
+ 
+ #include <initializer_list>
++#include <iterator>
+ #include <memory>
+ 
+ #ifdef _LIBCPP_BEGIN_NAMESPACE_STD
+diff --git a/Vc/traits/is_functor_argument_immutable.h b/Vc/traits/is_functor_argument_immutable.h
+index 3b08e37..7168b19 100644
+--- a/Vc/traits/is_functor_argument_immutable.h
++++ b/Vc/traits/is_functor_argument_immutable.h
+@@ -28,6 +28,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #ifndef VC_TRAITS_IS_FUNCTOR_ARGUMENT_IMMUTABLE_H_
+ #define VC_TRAITS_IS_FUNCTOR_ARGUMENT_IMMUTABLE_H_
+ 
++#include <utility>
++
+ namespace Vc_VERSIONED_NAMESPACE
+ {
+ namespace Traits
+-- 
+2.39.5 (Apple Git-154)
+
